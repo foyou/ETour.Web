@@ -1,0 +1,15 @@
+﻿{
+    "appid":"ETour",
+    "iOS":{
+    	"version":"1.0.0",
+    	"title":"ETour安装服务",
+    	"note":"目的购",
+    	"url":"itms-apps://itunes.apple.com/cn/app/hello-h5+/id682211190?l=zh&mt=8"
+    },
+    "Android":{
+    	"version":"1.0.0",
+    	"title":"ETour安装服务",
+    	"note":"目的购",
+    	"url":"http://220.248.119.202:8060/apk/"
+    }
+}

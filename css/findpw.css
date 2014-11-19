@@ -1,0 +1,41 @@
+@charset "utf-8";
+body{background-color:#EFEFEF;}
+input[type="text"],input[type="password"],input[type="tel"],input[type="number"]{padding:0 30px 0 0;}
+header h1{letter-spacing:normal;}
+
+.text_note{padding:20px 0 0 15px;}
+.findpw_box{padding-left:15px;border-top:1px solid #BCBCBC;border-bottom:1px solid #BCBCBC;background-color:#FFF;margin-top:10px;font-size: 15px;}
+.findpw_box li{position:relative;border-top:1px solid #BCBCBC;}
+.findpw_box li:first-child{border-top:0 none;}
+.findpw_box li label{float:left;width:80px;height:44px;line-height:44px;}
+.findpw_box li>div{position:relative;height:44px;margin:0 10px 0 80px;}
+.findpw_box+div{margin:10px 15px 0;}
+.findpw_box+div a{float:right;color:#099FDE;}
+
+.input_delete{display:none;position:absolute;top:50%;right:0;width:30px;height:30px;margin-top:-17px;}
+.input_delete:before,.input_delete:after{content:"";position:absolute;top:50%;left:50%;width:18px;height:2px;margin:0 0 0 -9px;background-color:#878787;}
+.input_delete:before{
+	-webkit-transform:rotate(45deg);
+	-ms-transform:rotate(45deg);
+	transform:rotate(45deg);
+}
+.input_delete:after{
+	-webkit-transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+}
+input:focus+.input_delete{display:block;}
+.btn,.btn_disabled{position:absolute;top:50%;right:10px;height:23px;padding:0 10px;line-height:23px;text-align:center;white-space:nowrap;color:#099FDE;border:1px solid #DBDBDB;background-color:#FFF;border-radius:2px;
+	-webkit-transform:translate(0,-50%);
+	-ms-transform:translate(0,-50%);
+	transform:translate(0,-50%);
+}
+.btn_disabled{color:#CCC;background-color:#EFEFEF;}
+
+.btn_box{margin:20px 15px 0;}
+.findpw_box+.btn_box{margin-top:25px;}
+
+.findpw_box li>div.register-code{padding-right: 145px;margin-right: 0;}
+.register-code .code-photo{position: absolute;top: 8px;right: 70px;width: 75px;height: 27px;}
+.register-code .code-photo img{width:100%;}
+.register-code .change{position:absolute;right: 8px;top:0;width: 55px;height: 44px;line-height: 44px;text-align: center;color:#0091D0;} 

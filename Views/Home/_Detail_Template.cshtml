@@ -1,0 +1,82 @@
+﻿<script type="text/template" id="detail-template">
+  <div class="sdetail"  style="display: block;">
+    <!--幻灯-->
+    <div class="m6">
+        <div class="mb">
+            <div class="cui-slide">
+                <!--商户logo-->
+                <div style="" id="shopping_detail_logodiv">
+                    <div class="nav-logo">
+                      <%= value.Guide_Title_CHN %> 
+                    </div>
+                </div>
+               
+                <div class="clear"></div>
+            </div> 
+            
+        </div>
+        <!--幻灯片-->
+    <% if(value.Pic_Files) {%>
+                            <div class="mb" id="sliderpanel">
+                                <div class="addWrap">
+                                    <div class="swipe" id="mySwipe2">
+                                        <div class="swipe-wrap">
+                                         <% for(var f=0;f<value.Pic_Files.length;f++) {%>
+                                            <div>
+                                                <a href="javascript:;">
+                                                    <img class="img-responsive" src="<%= value.Base_Address + value.Pic_Files[f] %>" /></a>
+                                            </div>                                           
+                                         <% } %>
+                                        </div>
+                                    </div>
+                                    <ul id="position2" class="position">
+                                      <% for(var e=0;e<value.Pic_Files.length;e++) {%>
+                                        <li></li>
+                                      <% } %>
+                                    </ul>
+                                </div>
+                            </div>
+    <%}%>
+            <!--幻灯片-->
+    </div>
+    <!--幻灯-->
+    <div id="js_detaillist">
+        <!--商户详情-->
+        <div class="m13">
+            <!--联系信息-->
+            <div class="mr mr2">
+                <ul class="list_st_border">
+                    <li class="arr_r saddress" id="saddress">
+                        <div class="mc1 fl"><span class="f_icon_s f_icon_s12"></span></div>
+                        <p class="greyfont">商户地址</p>
+                        <p class="mc2"><%= value.Guide_Address_CHN %></p>
+                        <i class="fricon hide">地图</i>
+                    </li>
+                    <li class="arr_r" id="phone">
+                        <div class="mc1 fl"><span class="f_icon_s f_icon_s14"></span></div>
+                        <p class="greyfont">联系电话</p>
+                        <p class="mc2"><%= value.Phone %></p>
+                    </li>
+                    <li class="noactiveli">
+                        <div class="mc1 fl"><span class="f_icon_s f_icon_s13"></span></div>
+                        <p class="greyfont">营业时间</p>
+                        <p class="mc2 break_all"><%= value.Open_Time %></p>
+                    </li>
+                    <!--商户介绍-->
+                    <li class="noactiveli">
+                        <div class="mc1 fl"><span class="f_icon_s f_icon_info"></span></div>
+                        <p class="greyfont">商户介绍</p>
+                        <div class="mc2" id="introcontent">
+                            <p><%= value.Guide_INFO_CHN %></p>
+                            <%if(value.WebSite!=""){%>
+                            <p>官方网站:<%= value.WebSite %></p>
+                            <%}%>
+                            <a class="m13-mask m13-mask-1 hide" id="morebtn">更多</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</script>

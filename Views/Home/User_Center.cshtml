@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "会员中心";
+    Layout = string.Empty; 
+}
+@model ETour.Model.SS_User
+<!DOCTYPE html>
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class="ie">
+<!--<![endif]-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="/css/main.css?v=1" />
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="stylesheet" type="text/css" href="/css/myctrip.css" />
+    @*<script src="~/Scripts/js/zepto.js"></script>*@
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</head>
+<body>
+    <div id="main" class="h100">
+        <div class="main-frame">
+            <div class="main-viewport">
+                <div style="" page-url="index" page-id="212051" id="id_viewport2" class="sub-viewport">
+                    <article class="jsloginbox">
+                        <section>
+                            <div class="home-header">
+                                <h1>我的目的购</h1>
+                                <i id="returnBack" class="home-i-back" onclick="javascript:history.back(-1);"></i>
+                            </div>
+                            <div class="member-box">
+                                <div class="jspersonalInfo">
+                                    <div class="member-pic">
+                                        @if (!string.IsNullOrWhiteSpace(Model.Avatar))
+                                        {       
+                                            <img src="@Model.Avatar" height="60" width="60">
+                                        }
+                                        else
+                                        { 
+                                            <img alt="" src="/images/portrait_100_100.jpg" height="60" width="60">
+                                        }
+                                    </div>
+                                    <div class="member-info">
+                                        <i class="i-user" data-g="0"></i>
+                                        @Model.User_Name
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="home-order-status hide">
+                                <li class="order-all" data-href="orders/allorders">
+                                    <i class="i-order"></i>
+                                    全部订单
+                                </li>
+                                <li class="order-awaitpay" data-href="orders/unpaidorderlist">
+                                    <i class="i-pay"></i>
+                                    待付款
+                                </li>
+                                <li class="order-nottravel" data-href="orders/unuseorderlist">
+                                    <i class="i-date" data-href="orders/unuseorderlist"></i>
+                                    未出行
+                                </li>
+                                <li class="order-awaitreview" data-href="orders/uncommentorderlist">
+                                    <i class="i-comment" data-href="orders/uncommentorderlist"></i>
+                                    待评价
+                                </li>
+                            </ul>
+                            <ul class="home-list">
+                                <li class="favorite hide" data-href="/favorite" data-type="1">收藏
+			                        <i class="i-favorite"></i>
+                                    <i class="home-arrow"></i>
+                                </li>
+                                <li id="commonInfo">
+                                    <em>地址</em>
+                                    常用信息
+			                        <i class="i-info"></i>
+                                    <i class="home-arrow"></i>
+                                </li>
+
+                            </ul>
+                        </section>
+                    </article>
+                </div>
+            </div>
+            <div class="main-state"></div>
+        </div>
+    </div>
+</body>
+</html>

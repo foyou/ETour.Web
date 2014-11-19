@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class="ie">
+<!--<![endif]-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />　
+    <script src="js/mui.min.js"></script>
+    <script src="js/update.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/swipe.css" />
+</head>
+<body>
+    @RenderBody()
+    @*@Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)*@
+</body>
+</html>

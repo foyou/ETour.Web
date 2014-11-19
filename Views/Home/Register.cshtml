@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "用户注册";
+    Layout = string.Empty;
+}
+@model ETour.Web.Models.RegisterModel
+<!DOCTYPE html>
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class="ie">
+<!--<![endif]-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="/css/main.css?v=1" />
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="stylesheet" type="text/css" href="/css/register.css" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</head>
+<body>
+    <div id="headerview" style="height: 48px;">
+        <header style="position: relative">
+            <h1>用户注册</h1>
+            <i id="c-ui-header-return" class="returnico i_bef" onclick="javascript:history.back(-1);"></i>
+        </header>
+    </div>
+    <div id="main" class="h100">
+        <div class="main-frame">
+            <div class="main-viewport">
+                <div class="sub-viewport" id="id_viewport2" page-id="153009" page-url="register" style="">
+                    <form id="Regfrom" data-ajax="true" action="@Url.Action("Register", "Home")" method="post">
+                        <section>
+                            <p class="form-tips">请输入您的本机号码已完成注册！</p>
+                            <ul class="mc-form">
+                                <li>
+                                    <label style="position: absolute; top: 0; left: 0px">手机号码</label>
+                                    <div class="form-detail clear-input-box">
+                                        <!-- input获得焦点时添加 r-focus 类名 -->
+                                        @Html.TextBoxFor(x => x.Mobile, new { type = "tel", maxlength = "11", placeholder = "11位数字", datatype = "mobile" })
+                                        <a class="clear-input " href="javascript:;" style="display: none;"><span></span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <label>设置密码</label>
+                                    <div class="form-detail clear-input-box">
+                                        @Html.PasswordFor(x => x.Password, new { placeholder = "由大小写字母、数字组成", maxlength = "16", minlength = "6", datatype = "*" })
+                                    </div>
+                                </li>
+                                <li>
+                                    <label>确认密码</label>
+                                    <div class="form-detail clear-input-box">
+                                        @Html.PasswordFor(x => x.RePassword, new { placeholder = "由大小写字母、数字组成", maxlength = "16", minlength = "6", datatype = "*" })
+                                    </div>
+                                </li>
+                                <li class="valid-code">
+                                    <label>激活码</label>
+                                    <div class="form-detail clear-input-box" style="margin-right:25px;">
+                                        <!-- input获得焦点时添加 r-focus 类名 -->
+                                        @Html.TextBoxFor(x => x.valCode, new { maxlength = "6", placeholder = "6位数字", datatype = "int",width="100px" })
+                                        <input type="button" class="btn_getJHm" id="btnSendcode" value="点击获取激活码" />
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="btn-box">
+                                <button class="g_btn_s" id="sendValCode" type="submit">确 认</button>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+            </div>
+            <div class="main-state"></div>
+        </div>
+    </div>
+    <div class="bottom">&copy;&nbsp;ETour</div>
+    <script type="text/javascript">
+        $(function () {
+            //发送手机短信
+            $("#btnSendcode").click(function () {
+                //检查是否输入手机号码
+                if ($("#Mobile").val() == "") {
+                    alert("对不起，请先输入手机号码！");
+                    return false;
+                }
+                //设置按钮状态
+                $("#valCode").prop("disabled", false);
+                $("#btnSendcode").prop("disabled", true);
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("User_Register_Smscode", "Home")',
+                    dataType: "json",
+                    data: {
+                        "_mobile": $("#Mobile").val(),
+                        "_password": $("#Password").val(),
+                        "_repassword": $("#RePassword").val(),
+                    },
+                    timeout: 20000,
+                    success: function (data, textStatus) {
+                        if (data.status == 1) {
+                            alert(data.msg);
+                            settime();
+                        } else {
+                            $("#btnSendcode").prop("disabled", false);
+                            $("#btnSendcode").addClass("dis");
+                            alert(data.msg);
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $("#btnSendcode").prop("disabled", false);
+                        alert("状态：" + textStatus + "；出错提示：" + errorThrown);
+                    }
+                });
+
+            });
+        });
+        function settime() {
+            var count = 60;
+            var countdown = setInterval(CountDown, 1000);
+            function CountDown() {
+                $("#btnSendcode").attr("disabled", true);
+                $("#btnSendcode").addClass("dis");
+                $("#btnSendcode").val("(" + count + "秒后)可再次发送");
+                if (count == 0) {
+                    $("#btnSendcode").val("点击获取验证码").removeAttr("disabled");
+                    $("#btnSendcode").removeClass("dis");
+                    clearInterval(countdown);
+                }
+                count--;
+            }
+        }
+    </script>
+</body>
+</html>

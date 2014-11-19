@@ -1,0 +1,1 @@
+define(["cStore","cBase"],function(a,b){var c=new b.Class(a,{__propertys__:function(){this.key="P_SHOP_LOCATION",this.lifeTime="1D"},initialize:function($super,a){$super(a)},setPosInfo:function(a){for(var b in a)this.setAttr(b,a[b])},PAGE_LOCATION_STATE_SUCCESS:1,PAGE_LOCATION_STATE_ERROR:0,PAGE_LOCATION_STATE_UNSUPPORT_CITY:2});return c});

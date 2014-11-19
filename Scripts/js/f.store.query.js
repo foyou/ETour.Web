@@ -1,0 +1,1 @@
+define(["cStore","cBase"],function(a,b){var c=new b.Class(a,{__propertys__:function(){this.key="P_QUERY",this.lifeTime="1D"},initialize:function($super,a){$super(a)}});return c});
